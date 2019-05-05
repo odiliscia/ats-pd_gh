@@ -1,0 +1,41 @@
+Thu Jun 10 08:13:22 PDT 2004
+
+This is the atsread function for PD (pure-data) by Miller Puckette It reads
+data and outputs data from atsfiles based on a time pointer.  See the
+help-atsread.pd file for more info about how to use it.  The external does not
+depend on any other externals but the help-file uses the zexy external to
+synthesize the sine waves.
+
+I have only tested it for Linux and haven't had any problems with the current
+software, please e-mail me if you find problems.
+
+Here is how I compile it (with "m_pd.h" from the PD source in the same directory) 
+gcc -shared -o atsread.pd_linux atsread.c
+
+or to allow byte swapping (using big endian files on little endian machines,
+and visa versa): 
+gcc -DBYTESWAP -shared -o atsread.pd_linux atsread.c
+
+for Mac OS X (with "m_pd.h" from the PD source in the same directory):
+cc -DBYTESWAP -bundle -flat_namespace -undefined suppress -o atsread.pd_darwin atscread.c
+
+(byte swapping should allow Mac users to use the cl.ats and crt.ats files that come with atsread)
+
+Then put the atsread.pd_linux file into your path somewhere (most likely your
+"externals" directory) and put the help-*.pd, cl.ats and crt.ats in your help
+directory (which should also be in your pd path hopefully).
+
+
+web-sites of interest:
+
+ATS: 	http://sourceforge.net/projects/atsa/ 
+http://www.dxarts.washington.edu/ats/
+
+PureData: www.pure-data.info
+http://crca.ucsd.edu/~msp/software.html
+
+This software is free for non-commercial use, use it at your own risk, I assume
+no responsibility, though if you do find a problem I'll try to fix it.  If you
+have a suggestion for optimization or any improvements them my way.
+
+External Written by: Alex Norman alexnorman@users.sourceforge.net

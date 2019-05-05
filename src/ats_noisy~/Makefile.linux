@@ -1,0 +1,9 @@
+ats_noisy~: ats_noisy~.c
+
+	gcc -c ats_noisy~.c -o ats_noisy~.o -fPIC
+	ld -shared -o ats_noisy~.pd_linux ats_noisy~.o -lc -lm
+	mv *.pd_linux ../../externals
+clean:
+	rm -f ../../externals/ats_noisy~.pd_linux
+	rm -f *.o
+	

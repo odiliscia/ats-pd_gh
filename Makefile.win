@@ -1,0 +1,14 @@
+
+
+all:
+	cd ./src/atsread;     make -f Makefile.win
+	cd ./src/ats_noisy~;  make -f Makefile.win
+	cd ./src/ats_sinnoi~; make -f Makefile.win
+	cd ./src/oscbank~;    make -f Makefile.win
+		
+clean: 
+	cd ./src/atsread;     make -f Makefile.win clean
+	cd ./src/ats_noisy~;  make -f Makefile.win clean
+	cd ./src/ats_sinnoi~; make -f Makefile.win clean
+	cd ./src/oscbank~;    make -f Makefile.win clean
+

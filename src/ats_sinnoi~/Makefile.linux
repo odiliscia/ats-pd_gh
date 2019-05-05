@@ -1,0 +1,9 @@
+ats_sinnoi~: ats_sinnoi~.c
+
+	gcc -c ats_sinnoi~.c -o ats_sinnoi~.o -fPIC
+	ld -shared -o ats_sinnoi~.pd_linux ats_sinnoi~.o -lc -lm
+	mv *.pd_linux ../../externals
+clean:
+	rm -f ../../externals/ats_sinnoi~.pd_linux
+	rm -f *.o
+	

@@ -1,0 +1,30 @@
+NAME = ats_sinnoi~
+CSYM = ats_sinnoi~
+
+current: pd_win
+
+DEST = "../../externals"
+PDPATH = "../../lib"
+LDFLAGS = -shared
+#set your compiler here
+COMPILER = "c:/Program Files (x86)/mingw-w64/i686-7.1.0-posix-dwarf-rt_v5-rev2/mingw32/bin/gcc.exe"
+# ----------------------- WIN i386 -----------------------
+pd_win: $(NAME).dll
+
+.SUFFIXES: .dll
+
+WINCFLAGS = -DPD -DNT -Werror -Wno-unused -mms-bitfields\
+	-Wno-parentheses -Wno-switch -O6 -funroll-loops -fomit-frame-pointer
+
+WININCLUDE =  -I.
+
+.c.dll:
+	$(COMPILER) $(WINCFLAGS) $(WININCLUDE) -c -o $*.o $*.c 
+	$(COMPILER) $(LDFLAGS) -o $*.dll $*.o $(PDPATH)/pd.dll
+	strip --strip-unneeded $*.dll
+	mv $*.dll $(DEST)
+	rm -f $*.o 
+	
+clean:
+	rm -f $*.o $(DEST)/$(NAME).dll
+	
