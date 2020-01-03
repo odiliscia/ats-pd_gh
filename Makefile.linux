@@ -1,14 +1,17 @@
 
-
-all:
+all: externals
 	cd ./src/atsread;     make -f Makefile.linux
 	cd ./src/ats_noisy~;  make -f Makefile.linux
 	cd ./src/ats_sinnoi~; make -f Makefile.linux
 	cd ./src/oscbank~;    make -f Makefile.linux
+
+externals:
+	mkdir externals
 	
 clean: 
 	cd ./src/atsread;     make -f Makefile.linux clean
 	cd ./src/ats_noisy~;  make -f Makefile.linux clean
 	cd ./src/ats_sinnoi~; make -f Makefile.linux clean
 	cd ./src/oscbank~;    make -f Makefile.linux clean
+	rm -rf externals
 

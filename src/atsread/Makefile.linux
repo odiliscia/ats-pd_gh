@@ -1,8 +1,8 @@
 atsread: atsread.c
-
 	gcc -c atsread.c -o atsread.o -fPIC
 	ld -shared -o atsread.pd_linux atsread.o -lc -lm
-	mv *.pd_linux ../../externals
+	mv *.pd_linux ../../externals/
+
 clean:
 	rm -f ../../externals/atsread.pd_linux
 	rm -f *.o
