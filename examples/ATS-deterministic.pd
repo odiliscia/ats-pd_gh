@@ -1,7 +1,8 @@
-#N canvas 530 173 574 416 12;
+#N canvas 538 346 574 416 12;
+#X declare -path ../externals;
 #X obj 271 185 hsl 204 15 0.25 2 0 0 ats-f freq frequency_scaler -2
 -8 0 10 -14493 -1 -1 8700 1;
-#X floatatom 271 217 5 0 0 0 - - -, f 5;
+#X floatatom 271 217 5 0 0 0 - - -;
 #X obj 269 132 hradio 15 1 0 14 ats-ts empty time_scaler 0 -8 0 10
 -4032 -1 -1 0;
 #X text 316 147 X;
@@ -44,7 +45,6 @@
 #X restore 84 158 pd ats-openfile;
 #X obj 84 127 bng 15 250 50 0 empty empty empty 17 7 0 10 -159808 -1
 -1;
-#X obj 84 272 output~;
 #N canvas 145 244 450 300 ats-detsynth 0;
 #X obj 115 191 *;
 #X obj 33 203 r par;
@@ -70,9 +70,9 @@
 #N canvas 66 87 524 583 tp 0;
 #X obj 141 27 inlet;
 #X obj 117 111 unpack f f f;
-#X floatatom 117 141 5 0 0 3 dur. - -, f 5;
-#X floatatom 281 108 5 0 0 3 npar. - -, f 5;
-#X floatatom 436 108 5 0 0 3 type - -, f 5;
+#X floatatom 117 141 5 0 0 3 dur. - -;
+#X floatatom 281 108 5 0 0 3 npar. - -;
+#X floatatom 436 108 5 0 0 3 type - -;
 #X obj 133 271 * 1000;
 #X msg 133 300 add2 \$1;
 #X msg 169 376 addcomma;
@@ -117,7 +117,7 @@
 #X msg 152 183 partials \$1;
 #X obj 219 100 * 250;
 #X obj 219 75 + 1;
-#X floatatom 219 138 5 0 0 0 - - -, f 5;
+#X floatatom 219 138 5 0 0 0 - - -;
 #X obj 152 210 s par;
 #X obj 135 48 inlet;
 #X obj 135 245 line;
@@ -150,12 +150,14 @@
 pdiliscia@iuna.edu.ar Programa de Investigacion "Sistemas Temporales
 y Sintesis Espacial en el Arte Sonoro" http://stseas.web.unq.edu.ar/
 odiliscia@unq.edu.ar;
+#X obj 84 272 dac~;
+#X obj 270 324 declare -path ../externals;
 #X connect 0 0 1 0;
 #X connect 5 0 4 0;
-#X connect 6 0 10 0;
+#X connect 6 0 9 0;
 #X connect 7 0 6 0;
+#X connect 8 0 11 0;
+#X connect 8 0 11 1;
 #X connect 9 0 8 0;
-#X connect 9 0 8 1;
-#X connect 10 0 9 0;
-#X connect 10 1 9 1;
-#X connect 10 2 9 2;
+#X connect 9 1 8 1;
+#X connect 9 2 8 2;

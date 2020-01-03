@@ -1,7 +1,8 @@
-#N canvas 445 125 1301 714 12;
-#X obj 148 35 hradio 15 1 0 14 ats-ts empty time_scaler 0 -8 0 10 -4032
--1 -1 0;
-#X text 212 53 X;
+#N canvas 114 103 692 578 12;
+#X declare -path ../externals;
+#X obj 197 164 hradio 15 1 0 14 ats-ts empty time_scaler 0 -8 0 10
+-4032 -1 -1 0;
+#X text 261 182 X;
 #N canvas 669 278 450 300 ats-defaults 0;
 #X obj 31 -33 loadbang;
 #X obj 49 93 s amp;
@@ -30,8 +31,8 @@
 #X connect 8 0 10 0;
 #X connect 11 0 9 0;
 #X connect 12 0 13 0;
-#X restore 150 86 pd ats-defaults;
-#X obj 150 68 bng 15 250 50 0 empty empty empty 17 7 0 10 -45076 -1
+#X restore 199 215 pd ats-defaults;
+#X obj 199 197 bng 15 250 50 0 empty empty empty 17 7 0 10 -45076 -1
 -1;
 #N canvas 736 384 450 300 ats-openfile 0;
 #X obj 120 55 openpanel;
@@ -46,19 +47,19 @@
 #X connect 4 0 5 0;
 #X connect 4 1 3 0;
 #X connect 5 0 3 0;
-#X restore 1 37 pd ats-openfile;
-#X obj 1 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -159808 -1
+#X restore 50 166 pd ats-openfile;
+#X obj 50 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -159808 -1
 -1;
-#X obj 0 184 output~;
+#X obj 49 313 dac~;
 #N canvas 192 205 450 300 ats-myreader 0;
 #X obj 122 97 atsread;
 #N canvas 338 204 455 418 ats-tp1 0;
 #N canvas 810 87 524 583 tp 0;
 #X obj 141 27 inlet;
 #X obj 117 111 unpack f f f;
-#X floatatom 117 141 5 0 0 3 dur. - -, f 5;
-#X floatatom 281 108 5 0 0 3 npar. - -, f 5;
-#X floatatom 436 108 5 0 0 3 type - -, f 5;
+#X floatatom 117 141 5 0 0 3 dur. - -;
+#X floatatom 281 108 5 0 0 3 npar. - -;
+#X floatatom 436 108 5 0 0 3 type - -;
 #X obj 133 271 * 1000;
 #X msg 133 300 add2 \$1;
 #X msg 169 376 addcomma;
@@ -103,7 +104,7 @@
 #X msg 232 184 partials \$1;
 #X obj 301 98 * 250;
 #X obj 301 72 + 1;
-#X floatatom 301 135 5 0 0 0 - - -, f 5;
+#X floatatom 301 135 5 0 0 0 - - -;
 #X obj 217 45 inlet;
 #X obj 217 243 line;
 #X obj 248 394 outlet;
@@ -156,7 +157,7 @@
 #X connect 10 0 11 0;
 #X connect 11 0 0 0;
 #X connect 12 0 0 0;
-#X restore 1 86 pd ats-myreader;
+#X restore 50 215 pd ats-myreader;
 #N canvas 386 152 290 404 ats-noisynth 0;
 #X obj 171 199 r interp;
 #X obj 62 56 inlet;
@@ -190,33 +191,34 @@
 #X connect 12 0 15 0;
 #X connect 13 0 12 1;
 #X connect 14 0 4 0;
-#X restore 1 163 pd ats-noisynth;
-#X obj 155 135 hsl 204 15 0 2 0 0 dscal dscalr deterministic_scaler
+#X restore 50 292 pd ats-noisynth;
+#X obj 204 264 hsl 204 15 0 2 0 0 dscal dscalr deterministic_scaler
 -2 -8 0 10 -4034 -1 -1 10150 1;
-#X obj 156 188 hsl 204 15 0 2 0 0 nscal nscalr residual_scaler -2 -8
+#X obj 205 317 hsl 204 15 0 2 0 0 nscal nscalr residual_scaler -2 -8
 0 10 -258113 -1 -1 10150 1;
-#X obj 156 246 hsl 204 15 0 1 0 0 bw bwr bandwidth_scaler -2 -8 0 10
+#X obj 205 375 hsl 204 15 0 1 0 0 bw bwr bandwidth_scaler -2 -8 0 10
 -257985 -1 -1 1015 1;
-#X obj 432 36 vsl 15 157 0 1 0 0 ampscal ampscalr det+res_scaler -30
+#X obj 481 165 vsl 15 157 0 1 0 0 ampscal ampscalr det+res_scaler -30
 -9 0 10 -4160 -1 -1 15600 1;
-#X floatatom 432 224 5 0 0 0 - - -, f 5;
-#X floatatom 152 154 5 0 0 0 - - -, f 5;
-#X floatatom 154 206 5 0 0 0 - - -, f 5;
-#X floatatom 153 265 5 0 0 0 - - -, f 5;
+#X floatatom 481 353 5 0 0 0 - - -;
+#X floatatom 201 283 5 0 0 0 - - -;
+#X floatatom 203 335 5 0 0 0 - - -;
+#X floatatom 202 394 5 0 0 0 - - -;
 #N canvas 187 298 450 300 amps 0;
 #X obj 72 119 s dscalr;
 #X obj 150 119 s nscalr;
 #X obj 134 58 inlet;
 #X connect 2 0 1 0;
 #X connect 2 0 0 0;
-#X restore 432 243 pd amps;
-#X obj 157 302 hsl 204 15 0.0625 2 0 0 frq frqr frequency_scaler -2
+#X restore 481 372 pd amps;
+#X obj 206 431 hsl 204 15 0.0625 2 0 0 frq frqr frequency_scaler -2
 -8 0 10 -260097 -1 -1 9823 1;
-#X floatatom 154 321 5 0 0 0 - - -, f 5;
-#X text -36 -103 atsread & ats_sinnoi~ EXAMPLE BY PABLO DI LISCIA odiliscia@unq.edu.ar
+#X floatatom 203 450 5 0 0 0 - - -;
+#X text 13 26 atsread & ats_sinnoi~ EXAMPLE BY PABLO DI LISCIA odiliscia@unq.edu.ar
 pdiliscia@iuna.edu.ar Programa de Investigacion "Sistemas Temporales
 y Sintesis Espacial en el Arte Sonoro" http://stseas.web.unq.edu.ar/
 odiliscia@unq.edu.ar;
+#X obj 116 508 declare -path ../externals;
 #X connect 3 0 2 0;
 #X connect 4 0 7 0;
 #X connect 5 0 4 0;

@@ -1,9 +1,10 @@
-#N canvas 99 82 1317 793 12;
+#N canvas 2 74 1317 793 12;
+#X declare -path ../externals;
 #X obj 257 266 hsl 204 15 0.25 2 0 0 ats-f freq frequency_scaler -2
 -8 0 10 -262144 -1 -1 8700 1;
-#X floatatom 253 298 5 0 0 0 - - -, f 5;
+#X floatatom 253 298 5 0 0 0 - - -;
 #X obj 255 211 hradio 15 1 0 14 ats-ts empty time_scaler 0 -8 0 10
--262144 -1 -1 0;
+-262144 -1 -1 7;
 #X text 309 225 X;
 #N canvas 398 290 450 300 ats-defaults 0;
 #X obj 31 -33 loadbang;
@@ -48,7 +49,6 @@
 #X restore 70 250 pd ats-openfile;
 #X obj 70 217 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 70 424 output~;
 #N canvas 161 98 450 300 ats-detsynth 0;
 #X obj 115 191 *;
 #X obj 33 203 r par;
@@ -74,16 +74,16 @@
 #N canvas 66 0 524 534 tp 0;
 #X obj 141 27 inlet;
 #X obj 117 111 unpack f f f;
-#X floatatom 117 141 5 0 0 3 dur. - -, f 5;
-#X floatatom 281 108 5 0 0 3 npar. - -, f 5;
-#X floatatom 436 108 5 0 0 3 type - -, f 5;
+#X floatatom 117 141 5 0 0 3 dur. - -;
+#X floatatom 281 108 5 0 0 3 npar. - -;
+#X floatatom 436 108 5 0 0 3 type - -;
 #X obj 133 271 * 1000;
 #X msg 133 300 add2 \$1;
 #X msg 169 376 addcomma;
 #X msg 185 406 add2 0 0;
 #X msg 150 338 add2 \$1;
 #X obj 115 513 outlet;
-#X msg 115 483 0 0 \, 3.63299 3632.99;
+#X msg 115 483 0 0 \, 2.51134 5022.68;
 #X msg 203 448 set;
 #X obj 436 440 outlet;
 #X obj 115 183 t b f f b b b;
@@ -121,7 +121,7 @@
 #X msg 184 98 partials \$1;
 #X obj 139 -4 * 250;
 #X obj 139 -29 + 1;
-#X floatatom 139 33 5 0 0 0 - - -, f 5;
+#X floatatom 139 33 5 0 0 0 - - -;
 #X obj 184 125 s par;
 #X obj 55 -56 inlet;
 #X obj 55 140 line;
@@ -218,7 +218,7 @@
 #X connect 27 0 16 1;
 #X restore 70 335 pd atstransform;
 #N canvas 66 83 1351 684 (subpatch) 0;
-#X array amplitudes 1024 float 1 black black;
+#X array amplitudes 1024 float 1;
 #A 0 0.99 0.99 0.99 0.99 0.99 0.99 0.99 0.99 0.99 0.99 0.99 0.9925
 0.995 0.995 0.99375 0.9925 0.99125 0.99 0.9875 0.985 0.985 0.98375
 0.9825 0.98125 0.98 0.978333 0.976667 0.975 0.973333 0.971667 0.97
@@ -357,7 +357,7 @@
 #X text 579 211 MAX=1;
 #X text 574 435 MIN=0;
 #N canvas 0 0 450 300 (subpatch) 0;
-#X array frequencies 1024 float 1 black black;
+#X array frequencies 1024 float 1;
 #A 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1.0015 1.003 1.0045 1.006 1.0075 1.00844
 1.00938 1.01031 1.01125 1.01219 1.01313 1.01406 1.015 1.01625 1.0175
 1.01875 1.02 1.02125 1.0225 1.02375 1.025 1.02625 1.0275 1.02875 1.03
@@ -482,17 +482,19 @@ odiliscia@unq.edu.ar This example shows how to warp the deterministic
 and the residual part of an ATS analysis using the two tables at the
 right that will handle amplitude Vs frequency and frequency Vs frequency
 for the deterministic part respectively.;
+#X obj 252 415 declare -path ../externals;
+#X obj 70 424 dac~;
 #X connect 0 0 1 0;
 #X connect 5 0 4 0;
-#X connect 6 0 10 0;
+#X connect 6 0 9 0;
 #X connect 7 0 6 0;
-#X connect 9 0 8 0;
-#X connect 9 0 8 1;
-#X connect 10 0 11 0;
-#X connect 10 1 11 1;
-#X connect 10 2 11 2;
-#X connect 11 0 9 0;
-#X connect 11 1 9 1;
-#X connect 11 2 9 2;
-#X connect 14 0 13 0;
-#X connect 18 0 19 0;
+#X connect 8 0 23 0;
+#X connect 8 0 23 1;
+#X connect 9 0 10 0;
+#X connect 9 1 10 1;
+#X connect 9 2 10 2;
+#X connect 10 0 8 0;
+#X connect 10 1 8 1;
+#X connect 10 2 8 2;
+#X connect 13 0 12 0;
+#X connect 17 0 18 0;
