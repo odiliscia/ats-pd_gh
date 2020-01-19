@@ -1,7 +1,8 @@
-#N canvas 77 125 1313 614 12;
+#N canvas 25 132 1313 614 12;
+#X declare -path ../externals;
 #X obj 218 293 hsl 204 15 0.25 2 0 0 ats-f freq frequency_scaler -2
 -8 0 10 -262144 -1 -1 8700 1;
-#X floatatom 218 324 5 0 0 0 - - -, f 5;
+#X floatatom 218 324 5 0 0 0 - - -;
 #X obj 216 238 hradio 15 1 0 14 ats-ts empty time_scaler 0 -8 0 10
 -262144 -1 -1 0;
 #X text 263 252 X;
@@ -48,7 +49,6 @@
 #X restore 31 265 pd ats-openfile;
 #X obj 31 232 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 44 436 output~;
 #N canvas 511 158 472 501 ats-detsynth 0;
 #X obj 115 191 *;
 #X obj 33 203 r par;
@@ -91,9 +91,9 @@
 #N canvas 66 0 524 534 tp 0;
 #X obj 141 27 inlet;
 #X obj 117 111 unpack f f f;
-#X floatatom 117 141 5 0 0 3 dur. - -, f 5;
-#X floatatom 281 108 5 0 0 3 npar. - -, f 5;
-#X floatatom 436 108 5 0 0 3 type - -, f 5;
+#X floatatom 117 141 5 0 0 3 dur. - -;
+#X floatatom 281 108 5 0 0 3 npar. - -;
+#X floatatom 436 108 5 0 0 3 type - -;
 #X obj 133 271 * 1000;
 #X msg 133 300 add2 \$1;
 #X msg 169 376 addcomma;
@@ -138,7 +138,7 @@
 #X msg 184 98 partials \$1;
 #X obj 139 9 * 250;
 #X obj 139 -15 + 1;
-#X floatatom 139 33 5 0 0 0 - - -, f 5;
+#X floatatom 139 33 5 0 0 0 - - -;
 #X obj 184 125 s par;
 #X obj 55 -56 inlet;
 #X obj 55 140 line;
@@ -256,7 +256,7 @@
 #X connect 35 0 6 1;
 #X restore 31 350 pd atstransform;
 #N canvas 66 83 1351 684 (subpatch) 0;
-#X array pan 1024 float 1 black black;
+#X array pan 1024 float 1;
 #A 0 0.935833 0.935833 0.935833 0.935833 0.935833 0.935833 0.935833
 0.933333 0.930833 0.930833 0.930833 0.930833 0.930833 0.930833 0.930833
 0.930833 0.930833 0.930833 0.930833 0.930833 0.930833 0.930833 0.930833
@@ -417,7 +417,7 @@
 #X obj 90 77 metro 1;
 #X msg 37 160 0;
 #N canvas 0 0 450 300 (subpatch) 0;
-#X array cos_tab 1024 float 3 black black;
+#X array cos_tab 1024 float 3;
 #A 0 1 0.999999 0.999995 0.999989 0.999981 0.999971 0.999958 0.999942
 0.999925 0.999905 0.999882 0.999857 0.99983 0.999801 0.999769 0.999735
 0.999698 0.999659 0.999618 0.999574 0.999528 0.99948 0.999429 0.999376
@@ -547,7 +547,7 @@
 #A 1000 0.0353051 0.0337705 0.032236 0.0307012 0.0291665 0.0276315
 0.0260967 0.0245616 0.0230265 0.0214915 0.0199563 0.0184212 0.0168859
 0.0153506 0.0138153 0.0122799 0.0107446 0.0092091 0.00767374 0.00613824
-0.00460285 0.00306733 0.00153191 -3.61999e-006;
+0.00460285 0.00306733 0.00153191 -3.61999e-06;
 #X coords 0 1 1024 0 600 140 1;
 #X restore 229 21 graph;
 #X obj 173 201 t f f;
@@ -591,22 +591,24 @@ odiliscia@unq.edu.ar pdiliscia@iuna.edu.ar Programa de Investigacion
 odiliscia@unq.edu.ar This example shows how to pan the deterministic
 part of an ATS analysis. The table at the right will handle panning
 angle Vs partial frequency.;
+#X obj 491 35 declare -path ../externals;
+#X obj 44 436 dac~;
 #X connect 0 0 1 0;
 #X connect 5 0 4 0;
-#X connect 6 0 10 0;
+#X connect 6 0 9 0;
 #X connect 7 0 6 0;
-#X connect 9 0 8 0;
-#X connect 9 1 8 1;
-#X connect 10 0 11 0;
-#X connect 10 1 11 1;
-#X connect 10 2 11 2;
-#X connect 11 0 9 0;
-#X connect 11 1 9 1;
-#X connect 11 2 9 2;
-#X connect 11 3 9 3;
-#X connect 11 4 9 4;
-#X connect 11 5 9 5;
-#X connect 14 0 13 0;
-#X connect 17 0 18 0;
-#X connect 22 0 21 0;
-#X connect 23 0 21 0;
+#X connect 8 0 25 0;
+#X connect 8 1 25 1;
+#X connect 9 0 10 0;
+#X connect 9 1 10 1;
+#X connect 9 2 10 2;
+#X connect 10 0 8 0;
+#X connect 10 1 8 1;
+#X connect 10 2 8 2;
+#X connect 10 3 8 3;
+#X connect 10 4 8 4;
+#X connect 10 5 8 5;
+#X connect 13 0 12 0;
+#X connect 16 0 17 0;
+#X connect 21 0 20 0;
+#X connect 22 0 20 0;
