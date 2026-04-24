@@ -34,7 +34,7 @@ a-Linux:
 	-cd your_folder/ats-pd/
 	-make -f Makefile.linux
 
-b-Windows (you will need CygWin properly installed in your system):
+b-Windows (I used MSYS2 and mingw-64 with all the toolchain properly installed in your system):
 	-Copy all the  ats-pd folder in the path you want.
 	-cd your_folder/ats-pd/
 	-make -f Makefile.win
